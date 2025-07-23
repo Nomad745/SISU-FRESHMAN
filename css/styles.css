@@ -1,0 +1,778 @@
+/* 上外新生攻略 - 现代化玻璃拟态设计样式 */
+
+/* CSS变量定义 */
+:root {
+    /* 主色调系统 */
+    --primary-blue: #1F3B8A;           /* 主色调 - 专业蓝 */
+    --primary-blue-light: #3B5998;     /* 浅蓝变体 */
+    --primary-blue-dark: #152B5F;      /* 深蓝变体 */
+
+    --accent-orange: #FF6B35;          /* 点缀色 - 活力橙 */
+    --accent-orange-light: #FF8A5B;    /* 浅橙变体 */
+    --accent-orange-dark: #E55A2B;     /* 深橙变体 */
+
+    --text-primary: #2C3E50;           /* 主要文字 - 深灰 */
+    --text-secondary: #5A6C7D;         /* 次要文字 - 中灰 */
+    --text-light: #8A9BA8;             /* 辅助文字 - 浅灰 */
+    --text-white: #FFFFFF;             /* 白色文字 */
+
+    /* 玻璃拟态背景 */
+    --glass-bg-primary: rgba(255, 255, 255, 0.08);      /* 主要玻璃背景 */
+    --glass-bg-secondary: rgba(255, 255, 255, 0.12);    /* 次要玻璃背景 */
+    --glass-bg-hover: rgba(255, 255, 255, 0.18);        /* 悬停玻璃背景 */
+    --glass-border: rgba(255, 255, 255, 0.2);           /* 玻璃边框 */
+    --glass-border-hover: rgba(255, 255, 255, 0.3);     /* 悬停边框 */
+
+    /* 多层次阴影系统 */
+    --glass-shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --glass-shadow-medium: 0 12px 40px rgba(0, 0, 0, 0.12);
+    --glass-shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.15);
+    --glass-shadow-hover: 0 25px 80px rgba(0, 0, 0, 0.2);
+
+    /* Material Design阴影层级 */
+    --elevation-1: 0 2px 8px rgba(0,0,0,0.08);
+    --elevation-2: 0 4px 16px rgba(0,0,0,0.12);
+    --elevation-3: 0 8px 24px rgba(0,0,0,0.15);
+    --elevation-4: 0 12px 32px rgba(0,0,0,0.18);
+    --elevation-5: 0 16px 40px rgba(0,0,0,0.2);
+}
+
+/* 全局样式基础 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Roboto', 'Poppins', '思源黑体', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    background: var(--primary-blue);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* 字体排版系统 */
+h1 { 
+    font-size: 48px; 
+    font-weight: 700; 
+    color: var(--text-white); 
+    margin-bottom: 8px; 
+}
+
+h2 { 
+    font-size: 36px; 
+    font-weight: 600; 
+    color: var(--text-primary); 
+    margin-bottom: 12px; 
+}
+
+h3 { 
+    font-size: 24px; 
+    font-weight: 600; 
+    color: var(--text-primary); 
+    margin-bottom: 8px; 
+}
+
+h4 { 
+    font-size: 18px; 
+    font-weight: 500; 
+    color: var(--text-primary); 
+    margin-bottom: 4px; 
+}
+
+p { 
+    font-size: 16px; 
+    font-weight: 300; 
+    color: var(--text-secondary); 
+}
+
+/* 玻璃拟态容器 */
+.glass-container {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: var(--glass-bg-primary);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    margin: 20px;
+    padding: 40px;
+    box-shadow: var(--glass-shadow-medium);
+}
+
+/* 头部样式 */
+.glass-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.glass-header h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 12px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.glass-header p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 24px;
+}
+
+/* 搜索容器 */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px auto 0;
+    max-width: 400px;
+}
+
+.glass-search {
+    flex: 1;
+    background: var(--glass-bg-secondary);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 16px 20px;
+    color: var(--text-white);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.glass-search::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.glass-search:focus {
+    outline: none;
+    background: var(--glass-bg-hover);
+    box-shadow: 0 0 0 2px var(--accent-orange);
+    transform: translateY(-2px);
+}
+
+.search-btn {
+    background: var(--accent-orange);
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.search-btn:hover {
+    transform: scale(1.05);
+    box-shadow: var(--elevation-2);
+}
+
+/* 增强版网格布局 - 固定3列布局 */
+.enhanced-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+    /* 确保卡片高度一致 */
+    align-items: stretch;
+}
+
+/* 基础玻璃拟态卡片 */
+.glass-card {
+    position: relative;
+    background: var(--glass-bg-primary);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+}
+
+/* 卡片悬浮效果 */
+.glass-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+}
+
+/* 卡片图标样式 */
+.card-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* 卡片内容区域 */
+.card-content h3 {
+    color: var(--text-white);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.card-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 16px;
+}
+
+/* 卡片统计信息 */
+.card-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.file-count {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* 进度条样式 */
+.progress-bar {
+    width: 60px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--accent-orange);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* 子页面样式 */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+}
+
+.back-button {
+    background: var(--glass-bg-secondary);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 12px 20px;
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-button:hover {
+    background: var(--glass-bg-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--elevation-2);
+}
+
+.page-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: auto;
+    min-width: 300px;
+}
+
+.page-title h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.page-title p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+}
+
+/* 内容区域 */
+.content-section {
+    background: var(--glass-bg-primary);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--glass-shadow-soft);
+}
+
+.content-section h2 {
+    color: var(--text-white);
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.content-section h3 {
+    color: var(--text-white);
+    font-size: 20px;
+    margin-bottom: 12px;
+    margin-top: 24px;
+}
+
+.content-section h4 {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    margin-bottom: 8px;
+    margin-top: 16px;
+}
+
+.content-section p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.content-section ul, .content-section ol {
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 20px;
+    margin-bottom: 16px;
+}
+
+.content-section li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* 链接样式 */
+.content-section a {
+    color: var(--accent-orange);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.content-section a:hover {
+    color: var(--accent-orange-light);
+    border-bottom-color: var(--accent-orange-light);
+}
+
+/* 表格样式 */
+.content-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: var(--glass-bg-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--elevation-1);
+}
+
+.content-table th,
+.content-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content-table th {
+    background: var(--glass-bg-hover);
+    color: var(--text-white);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.content-table td {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+.content-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 提示框样式 */
+.tip-box {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 107, 53, 0.05));
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.tip-box::before {
+    content: "💡";
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.tip-box p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+/* 按钮样式 */
+.modern-button {
+    background: var(--accent-orange);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modern-button:hover {
+    background: var(--accent-orange-light);
+    transform: translateY(-2px);
+    box-shadow: var(--elevation-3);
+}
+
+.modern-button.secondary {
+    background: var(--glass-bg-secondary);
+    border: 1px solid var(--glass-border);
+    color: var(--text-white);
+}
+
+.modern-button.secondary:hover {
+    background: var(--glass-bg-hover);
+}
+
+/* 响应式设计 */
+/* 超大屏幕 (1440px+) - 保持3列布局 */
+@media (min-width: 1440px) {
+    .enhanced-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+}
+
+/* 桌面端 (1024px - 1439px) - 保持3列布局 */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .enhanced-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+/* 中等桌面屏幕 (900px - 1023px) - 保持3列但调整间距 */
+@media (min-width: 900px) and (max-width: 1023px) {
+    .glass-container {
+        margin: 16px;
+        padding: 24px;
+    }
+
+    .enhanced-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .glass-card {
+        padding: 20px;
+    }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    h3 { font-size: 20px; }
+
+    .image-cards-section {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+    }
+}
+
+/* 平板端横屏 (768px - 899px) - 改为2列布局 */
+@media (min-width: 768px) and (max-width: 899px) {
+    .glass-container {
+        margin: 16px;
+        padding: 24px;
+    }
+
+    .enhanced-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    h3 { font-size: 20px; }
+
+    .image-cards-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}
+
+/* 平板端竖屏 (481px - 767px) - 改为2列布局 */
+@media (min-width: 481px) and (max-width: 767px) {
+    .glass-container {
+        margin: 12px;
+        padding: 20px;
+    }
+
+    .enhanced-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .glass-card {
+        min-height: 160px;
+        padding: 16px;
+    }
+
+    .search-container {
+        max-width: 100%;
+    }
+
+    h1 { font-size: 28px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 18px; }
+
+    .image-cards-section {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        text-align: center;
+        position: static;
+    }
+
+    .page-title {
+        position: static;
+        transform: none;
+        left: auto;
+        width: 100%;
+        min-width: auto;
+    }
+
+    .page-title h1 {
+        font-size: 28px;
+    }
+}
+
+/* 移动端 (320px - 480px) - 单列布局 */
+@media (max-width: 480px) {
+    .glass-container {
+        margin: 8px;
+        padding: 16px;
+    }
+
+    .enhanced-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .glass-card {
+        min-height: 140px;
+        padding: 16px;
+    }
+
+    h1 { font-size: 24px; }
+    h2 { font-size: 20px; }
+    h3 { font-size: 16px; }
+    h4 { font-size: 14px; }
+
+    .card-content h3 { font-size: 16px; }
+    .card-content p { font-size: 12px; }
+
+    .page-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+        position: static;
+    }
+
+    .page-title {
+        position: static;
+        transform: none;
+        left: auto;
+        width: 100%;
+        min-width: auto;
+    }
+
+    .page-title h1 {
+        font-size: 24px;
+    }
+
+    .content-section {
+        padding: 20px;
+    }
+
+    .content-section h2 {
+        font-size: 22px;
+    }
+
+    .content-table th,
+    .content-table td {
+        padding: 12px 8px;
+        font-size: 12px;
+    }
+
+    .image-cards-section {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+/* 快速导航链接样式 */
+.quick-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.quick-nav-link {
+    display: block;
+    background: linear-gradient(135deg,
+        rgba(255, 107, 53, 0.1),
+        rgba(255, 107, 53, 0.05)
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid var(--accent-orange);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 4px;
+    text-decoration: none;
+    color: var(--text-white);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    /* 确保边框完全可见 */
+    overflow: visible;
+    isolation: isolate;
+}
+
+.quick-nav-link:hover {
+    background: linear-gradient(135deg,
+        rgba(255, 107, 53, 0.2),
+        rgba(255, 107, 53, 0.1)
+    );
+    border-color: var(--accent-orange-light);
+    border-width: 2px;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+    color: var(--text-white);
+    z-index: 2;
+    /* 确保悬停时边框仍然完全可见 */
+    overflow: visible;
+}
+
+/* 快速导航响应式设计 */
+@media (max-width: 768px) {
+    .quick-nav-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 24px;
+    }
+
+    .quick-nav-link {
+        padding: 14px 16px;
+        font-size: 14px;
+        margin: 4px;
+        /* 移动端确保边框可见 */
+        overflow: visible;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .quick-nav-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    .quick-nav-link {
+        font-size: 15px;
+        margin: 4px;
+        /* 平板端确保边框可见 */
+        overflow: visible;
+    }
+}
+
+@media (min-width: 1025px) {
+    .quick-nav-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-bottom: 24px;
+    }
+
+    .quick-nav-link {
+        margin: 4px;
+        /* 桌面端确保边框可见 */
+        overflow: visible;
+    }
+}
+
+/* 页面过渡动画 */
+.page-transition {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+}
+
+.page-transition.loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 图片卡片样式 - 原尺寸显示 */
+.card-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.glass-card:hover .card-image {
+    transform: scale(1.02);
+    border-radius: 16px;
+}
+
+/* 图片卡片容器 */
+.image-cards-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+/* 图片卡片特殊样式 */
+.glass-card.image-card {
+    min-height: auto;
+    padding: 20px;
+}
